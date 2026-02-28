@@ -19,12 +19,12 @@ HEADERS = {
 }
 
 # Keywords to detect results being live
-# Targeting January 2025 CA Final results specifically
+# Targeting January 2026 CA Final results specifically
 KEYWORDS = [
     "ca final",
     "final examination",
-    "january 2025",
-    "jan 2025",
+    "january 2026",
+    "jan 2026",
     "result",
 ]
 
@@ -43,7 +43,7 @@ def send_telegram(message):
 
 
 def check_if_results_live():
-    """Check icai.nic.in for CA Final January 2025 result links."""
+    """Check icai.nic.in for CA Final January 2026 result links."""
     try:
         resp = requests.get(TARGET_URL, headers=HEADERS, timeout=15)
         soup = BeautifulSoup(resp.text, "html.parser")
@@ -73,11 +73,11 @@ def check_if_results_live():
 
         # Fallback: check raw page text for keywords combo
         if ("final" in page_text and "result" in page_text and
-                ("january" in page_text or "jan 2025" in page_text)):
+                ("january" in page_text or "jan 2026" in page_text)):
             print("⚠️ Keywords found in page text but no direct link detected")
             return True, []
 
-        print("❌ No CA Final January 2025 result found yet")
+        print("❌ No CA Final January 2026 result found yet")
         return False, []
 
     except Exception as e:
@@ -110,7 +110,7 @@ def fetch_my_result(result_page_url):
 
 
 def main():
-    print(f"🔍 Checking {TARGET_URL} for CA Final January 2025 results...")
+    print(f"🔍 Checking {TARGET_URL} for CA Final January 2026 results...")
     print(f"   Roll No: {ROLL_NUMBER}")
 
     live, result_links = check_if_results_live()
@@ -139,7 +139,7 @@ def main():
             )
         else:
             send_telegram(
-                "🎓 <b>CA FINAL JANUARY 2025 RESULTS ARE LIVE!</b>\n\n"
+                "🎓 <b>CA FINAL JANUARY 2026 RESULTS ARE LIVE!</b>\n\n"
                 f"👉 Check here: {links_text if links_text else TARGET_URL}\n\n"
                 f"Roll No: <b>{ROLL_NUMBER}</b>\n"
                 f"Reg No: {REGISTRATION_NUMBER}\n\n"
@@ -149,7 +149,7 @@ def main():
         print("❌ Results not live yet.")
         send_telegram(
             "🔍 <b>Checked icai.nic.in</b>\n\n"
-            "❌ CA Final January 2025 results are <b>not live yet</b>\n\n"
+            "❌ CA Final January 2026 results are <b>not live yet</b>\n\n"
             "⏰ Will check again in sometime automatically!"
         )
 
