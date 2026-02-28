@@ -150,7 +150,7 @@ def main():
         send_telegram(
             "🔍 <b>Checked icai.nic.in</b>\n\n"
             "❌ CA Final January 2025 results are <b>not live yet</b>\n\n"
-            "⏰ Will check again in 15 minutes automatically!"
+            "⏰ Will check again in sometime automatically!"
         )
 
 
