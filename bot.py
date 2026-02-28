@@ -107,7 +107,7 @@ def main():
             )
     else:
         print("❌ Results not live yet.")
-
+        send_telegram("🔍 Checked for CA Final results — <b>Not live yet.</b>\n\nWill keep checking every 15 minutes automatically!")
 
 if __name__ == "__main__":
     main()
